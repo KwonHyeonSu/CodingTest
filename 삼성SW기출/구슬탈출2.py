@@ -1,5 +1,2 @@
-a = 5
-b = 3
-
-def __add__(self, a, b):
-    return 
+for i in range(0,6,2):
+    print(i)
