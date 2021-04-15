@@ -35,6 +35,7 @@ for L in arr:
     k = 2 ** L
     for x in range(0, 2**N, k):
         for y in range(0, 2**N, k):
+            
             temp = [ice[i][y:y+k] for i in range(x, x+k)]
             for i in range(k):
                 for j in range(k):
