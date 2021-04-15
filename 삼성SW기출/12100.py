@@ -1,4 +1,4 @@
-# 12100
+# 12100 - 2048문제
 
 import sys
 import copy
