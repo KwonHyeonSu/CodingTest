@@ -1,8 +1,5 @@
-l = [1,2,3,4,5]
+import collections
 
-def slicing(l, n):
-    l.insert(0,l[-n:])
-
-
-slicing(l, 3)
-print(l)
+a = collections.Counter()
+a.update("abcdefg")
+print(a)
