@@ -1,5 +1,6 @@
-import collections
+arr = [
+    [1, 1],
+    [1, 1]
+]
 
-a = collections.Counter()
-a.update("abcdefg")
-print(a)
+print(sum([arr[i].count(1) for i in range(len(arr))]))
