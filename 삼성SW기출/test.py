@@ -1,4 +1,8 @@
-i = 0
-for i in range(10):
-    i += 2
-    print(i)
+a = [0,1,2,3]
+
+for i in range(len(a)):
+    #print(i, a[i])
+    
+    print(a.pop(i))
+    i-=1
+    print('i : ', i)
