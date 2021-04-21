@@ -1,2 +1,4 @@
-a = [1,2,3,5]
-print(sum(a)/len(a))
+i = 0
+for i in range(10):
+    i += 2
+    print(i)
