@@ -1,7 +1,6 @@
-temp = [[1, 2],
-        [3, 4]]
-t = [1,2,3,4]
+a = [0,1, 9]
+b = [5,6,7,8]
+c = [4,2,3]
 
-temp2  = [temp[x][0:2] for x in range(2)]
-
-print(temp2)
+for tmp in zip(a, b, c):
+        print(tmp)
