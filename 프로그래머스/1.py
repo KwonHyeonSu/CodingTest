@@ -1,35 +1,27 @@
-from collections import deque
-
-n = 6
-vertex = [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]
-
-def bfs(v, visited, adj):
-    count = 0
-    q = deque([[v, count]])
-    while q:
-        value = q.popleft()
-        v = value[0]
-        count = value[1]
-        if visited[v] == -1:
-            visited[v] = count
-            count += 1
-            for e in adj[v]:
-                q.append([e, count])
-
 def solution(n, edge):
-    answer = 0
-    visited = [-1] * (n+1)
-    adj = [[] for _ in range(n+1)]
-    for e in edge:
-        x = e[0]
-        y = e[1]
-        adj[x].append(y)
-        adj[y].append(x)
-    print("adj : " , adj)
-    bfs(1, visited, adj)
-    for value in visited:
-        if value == max(visited):
-            answer += 1
+    graph = [[] for _ in range(n+1)]
+    distance = [0 for _ in range(n)]
+    is_visit = [False for _ in range(n)]
+    queue = [0]
+    is_visit[0] = True
+    
+    for (a, b) in edge:
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+    
+    while queue:
+        i = queue.pop(0)
+        
+        for j in graph[i]:
+            if is_visit[j] == False:
+                is_visit[j] = True
+                queue.append(j)
+                distance[j] = distance[i] + 1
+    distance.sort(reverse=True)
+    answer = distance.count(distance[0])
     return answer
+
+vertex = [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]
+n = 6
 
 print(solution(n, vertex))
