@@ -1,0 +1,20 @@
+def solution(numbers, target):
+    return DFS(numbers, target, 0)
+
+def DFS(numbers, target, depth):
+    answer = 0
+
+    if depth == len(numbers):
+        if sum(numbers) == target:
+            return 1
+        else : return 0
+
+    else:
+        answer += DFS(numbers, target, depth+1)
+        numbers[depth] *= -1
+        answer += DFS(numbers, target, depth+1)
+        return answer
+
+numbers = [4,1,2,1]
+target = 4
+print(solution(numbers, target))
