@@ -1,40 +1,30 @@
+from collections import defaultdict
 
 def solution(tickets):
     answer = []
-    for i in range(len(tickets)):
-        if tickets[i][0] == "ICN":
-            visited = [False] * len(tickets)
-            answer.append(DFS(tickets, i, visited, []))
-
-    answer.sort()
-    answer[0].insert(0, "ICN")
-
-    return answer[0]
-
-def check(a):
-    for i in a:
-        if i == False:
-            return False
-    return True
-
-def DFS(tickets, i, visited, result):
-
-    visited[i] = True
-
-    result.append(tickets[i][1])
-
-    if check(visited) == True:
-        #print("end, result : " , end = "")
-        #print(result)
-        return result
-
-    for j in range(len(tickets)):
-        if visited[j] == False and tickets[i][1] == tickets[j][0]:
-            result = DFS(tickets, j, visited, result)
-            return result
+    routes = defaultdict(list)
 
 
+    for key, value in tickets:
+        routes[key].append(value)
 
+    for key in routes.keys():
+        routes[key].sort(reverse = True)
+    print(routes)
+
+    stack = ['ICN']
+    while stack:
+        tmp = stack[-1]
+        print(tmp + "\t-->\t", end = "")
+        if not routes[tmp]:
+            print("no")
+            answer.append(stack.pop())
+            
+        else:
+            stack.append(routes[tmp].pop())
+            print("yes, stack : ", end = "")
+            print(stack)
+    print(answer)
 
 
 t = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
